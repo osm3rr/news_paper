@@ -3,6 +3,18 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    You are in the home page
+
+    {% if user.is_authenticated %}
+
+        Hi {{ user.username }}
+        <p><a href="{% url 'logout' %}">Log out</a></p>
+
+    {% else %}
+
+        <p>You are not logged</p>
+        <a href="{% url 'login' %}">Log In</a>
+        
+    {% endif %}
+
 {% endblock content %}
 
